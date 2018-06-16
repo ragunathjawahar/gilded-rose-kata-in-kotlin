@@ -62,4 +62,24 @@ class GildedRoseTest {
     assertThat(sulfuras.quality).isEqualTo(originalQuality)
   }
 
+  @Test
+  fun `backstage passes, increases quality by 2 between 6 to 10 days of sell-in`() {
+    // given
+    val backstagePasses = backstagePasses(10, 24)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    gildedRose.runFor(1)
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(9)
+    assertThat(backstagePasses.quality).isEqualTo(26)
+
+    // when
+    gildedRose.runFor(3)
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(6)
+    assertThat(backstagePasses.quality).isEqualTo(32)
+  }
 }
