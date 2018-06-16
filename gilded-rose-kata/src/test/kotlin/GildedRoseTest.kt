@@ -39,7 +39,7 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `normal item quality does not degrade beyond 0`() {
+  fun `normal item quality does not degrade below 0`() {
     // given
     val dragonEgg = Item("Dragon Egg", 0, 0)
     val gildedRose = GildedRose(dragonEgg)
@@ -53,7 +53,7 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `normal item's quality degrades by 2 once the sell by date passes`() {
+  fun `normal item's quality degrades by 2 once the sell-in date passes`() {
     // given
     val dragonEgg = Item("Dragon Egg", 0, 20)
     val gildedRose = GildedRose(dragonEgg)
