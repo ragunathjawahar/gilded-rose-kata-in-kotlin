@@ -28,7 +28,7 @@ class GildedRoseTest {
   fun `aged brie increases in quality, the older is gets but is never more than the maximum quality`() {
     // given
     val agedBrie = agedBrie(5, 47)
-    val gildedRose = GildedRose(listOf(agedBrie))
+    val gildedRose = GildedRose(agedBrie)
 
     // when
     gildedRose.runFor(2)
@@ -55,7 +55,7 @@ class GildedRoseTest {
     assertThat(sulfuras.quality).isEqualTo(SULFURAS_QUALITY)
 
     // when
-    GildedRose(listOf(sulfuras)).runFor(100)
+    GildedRose(sulfuras).runFor(100)
 
     // then
     assertThat(sulfuras.sellIn).isEqualTo(0)

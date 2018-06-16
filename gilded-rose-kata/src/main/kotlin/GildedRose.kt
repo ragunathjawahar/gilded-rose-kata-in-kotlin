@@ -1,6 +1,8 @@
 const val MAX_QUALITY = 50
 
 class GildedRose(val items: List<Item>) {
+  constructor(item: Item) : this(listOf(item))
+
   fun updateQuality() {
     for (i in 0..items.size-1) {
       if (items[i].name != AGED_BRIE && items[i].name != BACKSTAGE_PASSES) {
