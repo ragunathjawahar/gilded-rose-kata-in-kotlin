@@ -25,6 +25,20 @@ class GildedRoseTest {
   }
 
   @Test
+  fun `quality of an item decreases by 1`() {
+    // given
+    val elixirOfTheMongoose = elixirOfTheMongoose(5, 10)
+    val gildedRose = GildedRose(elixirOfTheMongoose)
+
+    // when
+    updateQuality(gildedRose, 1)
+
+    // then
+    assertThat(elixirOfTheMongoose.sellIn).isEqualTo(4)
+    assertThat(elixirOfTheMongoose.quality).isEqualTo(9)
+  }
+
+  @Test
   fun `quality of an item degrades twice as fast after the sell-in`() {
     // given
     val agedBrie = dexterityVest(0, 50)
