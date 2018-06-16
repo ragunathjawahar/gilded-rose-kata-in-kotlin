@@ -1,10 +1,10 @@
 fun main(args: Array<String>) {
   val items = mutableListOf(
-      dexterityVest(10, 20),
-      agedBrie(2, 0),
-      elixirOfTheMongoose(5, 7),
-      sulfuras(),
-      backstagePasses(15, 20)
+      DexterityVest(10, 20),
+      AgedBrie(2, 0),
+      ElixirOfTheMongoose(5, 7),
+      Sulfuras(),
+      BackstagePasses(15, 20)
       // Item("Conjured Mana Cake", 15, 20)
   )
 

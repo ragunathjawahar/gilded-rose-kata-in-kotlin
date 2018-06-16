@@ -1,20 +1,5 @@
-fun agedBrie(sellIn: Int, quality: Int): Item =
-    AgedBrie(sellIn, quality)
-
-fun backstagePasses(sellIn: Int, quality: Int): Item =
-    BackstagePasses(sellIn, quality)
-
-fun dexterityVest(sellIn: Int, quality: Int): Item =
-    DexterityVest(sellIn, quality)
-
-fun elixirOfTheMongoose(sellIn: Int, quality: Int): Item =
-    ElixirOfTheMongoose(sellIn, quality)
-
-fun sulfuras(): Item =
-    Sulfuras()
-
 open class Item(
-    val name: String,
+    private val name: String,
     var sellIn: Int,
     var quality: Int
 ) {
