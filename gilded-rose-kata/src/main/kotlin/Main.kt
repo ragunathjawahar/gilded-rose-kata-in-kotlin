@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
   gildedRose.runFor(20)
 }
 
-fun GildedRose.runFor(days: Int) {
+private fun GildedRose.runFor(days: Int) {
   for (day in 1..days) {
     println("---- Day #$day ----")
     updateQuality()

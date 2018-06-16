@@ -15,7 +15,7 @@ class GildedRoseTest {
     )
 
     // when
-    GildedRose(items).runFor(days)
+    updateQuality(GildedRose(items), days)
 
     // then
     items.forEach {
@@ -31,7 +31,7 @@ class GildedRoseTest {
     val gildedRose = GildedRose(agedBrie)
 
     // when
-    gildedRose.runFor(2)
+    updateQuality(gildedRose, 2)
 
     // then
     assertThat(agedBrie.sellIn)
@@ -46,7 +46,7 @@ class GildedRoseTest {
     val gildedRose = GildedRose(agedBrie)
 
     // when
-    gildedRose.runFor(8)
+    updateQuality(gildedRose, 8)
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(2)
@@ -61,7 +61,7 @@ class GildedRoseTest {
     val originalQuality = sulfuras.quality
 
     // when
-    GildedRose(sulfuras).runFor(100)
+    updateQuality(GildedRose(sulfuras), 100)
 
     // then
     assertThat(sulfuras.sellIn).isEqualTo(originalSellIn)
@@ -75,14 +75,14 @@ class GildedRoseTest {
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    gildedRose.runFor(1)
+    updateQuality(gildedRose, 1)
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(9)
     assertThat(backstagePasses.quality).isEqualTo(26)
 
     // when
-    gildedRose.runFor(3)
+    updateQuality(gildedRose, 3)
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(6)
@@ -96,14 +96,14 @@ class GildedRoseTest {
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    gildedRose.runFor(1)
+    updateQuality(gildedRose, 1)
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(4)
     assertThat(backstagePasses.quality).isEqualTo(30)
 
     // when
-    gildedRose.runFor(3)
+    updateQuality(gildedRose, 3)
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(1)
@@ -117,7 +117,7 @@ class GildedRoseTest {
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    gildedRose.runFor(1)
+    updateQuality(gildedRose, 1)
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(-1)
@@ -131,9 +131,15 @@ class GildedRoseTest {
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    gildedRose.runFor(4)
+    updateQuality(gildedRose, 4)
 
     // then
     assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
+  }
+
+  private fun updateQuality(gildedRose: GildedRose, days: Int) {
+    for (day in 1..days) {
+      gildedRose.updateQuality()
+    }
   }
 }
