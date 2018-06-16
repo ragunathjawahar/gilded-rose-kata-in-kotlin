@@ -1,3 +1,22 @@
+const val AGED_BRIE = "Aged Brie"
+const val BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
+const val SULFURAS = "Sulfuras, Hand of Ragnaros"
+
+fun agedBrie(sellIn: Int, quality: Int): Item =
+    Item(AGED_BRIE, sellIn, quality)
+
+fun backstagePasses(sellIn: Int, quality: Int): Item =
+    Item(BACKSTAGE_PASSES, sellIn, quality)
+
+fun dexterityVest(sellIn: Int, quality: Int): Item =
+    Item("+5 Dexterity Vest", sellIn, quality)
+
+fun elixirOfTheMongoose(sellIn: Int, quality: Int): Item =
+    Item("Elixir of the Mongoose", sellIn, quality)
+
+fun sulfuras(sellIn: Int, quality: Int): Item =
+    Item(SULFURAS, sellIn, quality)
+
 data class Item(
     val name: String,
     var sellIn: Int,
