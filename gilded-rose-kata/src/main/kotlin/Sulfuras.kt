@@ -1,7 +1,4 @@
-private const val SULFURAS = "Sulfuras, Hand of Ragnaros"
-private const val SULFURAS_QUALITY = 80
-
-class Sulfuras : Item(SULFURAS, 0, SULFURAS_QUALITY) {
+class Sulfuras : Item("Sulfuras, Hand of Ragnaros", 0, 80) {
   override fun updateQuality() {
     /* do nothing */
   }

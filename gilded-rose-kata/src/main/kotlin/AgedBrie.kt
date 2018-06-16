@@ -1,6 +1,7 @@
-private const val AGED_BRIE = "Aged Brie"
-
-class AgedBrie(sellIn: Int, quality: Int) : Item(AGED_BRIE ,sellIn, quality) {
+class AgedBrie(
+    sellIn: Int,
+    quality: Int
+) : Item("Aged Brie" ,sellIn, quality) {
   override fun updateQuality() {
     sellIn -=1
     if (quality < MAX_QUALITY) {

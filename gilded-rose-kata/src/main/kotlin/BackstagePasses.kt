@@ -1,6 +1,7 @@
-private const val BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
-
-class BackstagePasses(sellIn: Int, quality: Int) : Item(BACKSTAGE_PASSES, sellIn, quality) {
+class BackstagePasses(
+    sellIn: Int,
+    quality: Int
+) : Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality) {
   override fun updateQuality() {
     if (sellIn >= 0 && quality < MAX_QUALITY) {
       quality += when {
