@@ -2,29 +2,29 @@ group 'gr.le0nidas'
 version '0.1.0'
 
 buildscript {
-    ext.kotlin_version = '1.0.3'
+  ext.kotlin_version = '1.0.3'
 
-    repositories {
-        jcenter()
-    }
+  repositories {
+    jcenter()
+  }
 
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
 }
 
 
 apply plugin: 'kotlin'
 
 repositories {
-    jcenter()
+  jcenter()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 sourceSets {
-    main.java.srcDirs = []
-    test.java.srcDirs = []
+  main.java.srcDirs = []
+  test.java.srcDirs = []
 }
