@@ -3,6 +3,28 @@ import org.junit.Test
 
 class GildedRoseTest {
   @Test
+  fun `quality of an item is never negative`() {
+    // given
+    val days = 100
+    val items = listOf(
+        dexterityVest(days, MAX_QUALITY),
+        agedBrie(days, MAX_QUALITY),
+        elixirOfTheMongoose(days, MAX_QUALITY),
+        sulfuras(),
+        backstagePasses(days, MAX_QUALITY)
+    )
+
+    // when
+    updateQuality(GildedRose(items), days)
+
+    // then
+    items.forEach {
+      assertThat(it.quality)
+          .isAtLeast(0)
+    }
+  }
+
+  @Test
   fun `normal item's quality degrades by 1`() {
     // given
     val dragonEgg = Item("Dragon Egg", 10, 40)
@@ -98,56 +120,6 @@ class GildedRoseTest {
     // then
     assertThat(agedBrie.sellIn).isEqualTo(-6)
     assertThat(agedBrie.quality).isEqualTo(MAX_QUALITY)
-  }
-
-  @Test
-  fun `quality of an item is never negative`() {
-    // given
-    val days = 100
-    val items = listOf(
-        dexterityVest(days, MAX_QUALITY),
-        agedBrie(days, MAX_QUALITY),
-        elixirOfTheMongoose(days, MAX_QUALITY),
-        sulfuras(),
-        backstagePasses(days, MAX_QUALITY)
-    )
-
-    // when
-    updateQuality(GildedRose(items), days)
-
-    // then
-    items.forEach {
-      assertThat(it.quality)
-          .isAtLeast(0)
-    }
-  }
-
-  @Test
-  fun `quality of an item decreases by 1`() {
-    // given
-    val elixirOfTheMongoose = elixirOfTheMongoose(5, 10)
-    val gildedRose = GildedRose(elixirOfTheMongoose)
-
-    // when
-    updateQuality(gildedRose, 1)
-
-    // then
-    assertThat(elixirOfTheMongoose.sellIn).isEqualTo(4)
-    assertThat(elixirOfTheMongoose.quality).isEqualTo(9)
-  }
-
-  @Test
-  fun `quality of an item degrades by 2 after the sell-in`() {
-    // given
-    val agedBrie = dexterityVest(0, MAX_QUALITY)
-    val gildedRose = GildedRose(agedBrie)
-
-    // when
-    updateQuality(gildedRose, 20)
-
-    // then
-    assertThat(agedBrie.sellIn).isEqualTo(-20)
-    assertThat(agedBrie.quality).isEqualTo(10)
   }
 
   @Test
