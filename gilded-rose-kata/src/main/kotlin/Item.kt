@@ -5,10 +5,10 @@ fun backstagePasses(sellIn: Int, quality: Int): Item =
     BackstagePasses(sellIn, quality)
 
 fun dexterityVest(sellIn: Int, quality: Int): Item =
-    Item("+5 Dexterity Vest", sellIn, quality)
+    DexterityVest(sellIn, quality)
 
 fun elixirOfTheMongoose(sellIn: Int, quality: Int): Item =
-    Item("Elixir of the Mongoose", sellIn, quality)
+    ElixirOfTheMongoose(sellIn, quality)
 
 fun sulfuras(): Item =
     Sulfuras()
