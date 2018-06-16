@@ -7,7 +7,20 @@ class GildedRose(val items: List<Item>) {
     items.forEach(::updateQuality)
   }
 
+  private fun agedBrieUpdateQuality(item: Item) {
+    item.sellIn -=1
+    if (item.quality < MAX_QUALITY) {
+      val qualityToIncrease = if (item.sellIn < 0) 2 else 1
+      item.quality += qualityToIncrease
+    }
+  }
+
   private fun updateQuality(item: Item) {
+    if (item.name == AGED_BRIE) {
+      agedBrieUpdateQuality(item)
+      return
+    }
+
     if (item.name != AGED_BRIE && item.name != BACKSTAGE_PASSES) {
       if (item.quality > 0) {
         if (item.name != SULFURAS) {
