@@ -1,10 +1,8 @@
-const val BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
-
 fun agedBrie(sellIn: Int, quality: Int): Item =
     AgedBrie(sellIn, quality)
 
 fun backstagePasses(sellIn: Int, quality: Int): Item =
-    Item(BACKSTAGE_PASSES, sellIn, quality)
+    BackstagePasses(sellIn, quality)
 
 fun dexterityVest(sellIn: Int, quality: Int): Item =
     Item("+5 Dexterity Vest", sellIn, quality)
@@ -20,6 +18,10 @@ open class Item(
     var sellIn: Int,
     var quality: Int
 ) {
+  companion object {
+    @JvmStatic val MAX_QUALITY = 50
+  }
+
   open fun updateQuality() {
     sellIn -= 1
     if (quality > 0) {
