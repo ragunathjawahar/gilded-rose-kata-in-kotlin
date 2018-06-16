@@ -39,9 +39,9 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `quality of an item degrades twice as fast after the sell-in`() {
+  fun `quality of an item degrades by 2 after the sell-in`() {
     // given
-    val agedBrie = dexterityVest(0, 50)
+    val agedBrie = dexterityVest(0, MAX_QUALITY)
     val gildedRose = GildedRose(agedBrie)
 
     // when
@@ -53,7 +53,7 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `aged brie increases in quality, the older is gets`() {
+  fun `aged brie increases in quality by 1, the older is gets`() {
     // given
     val agedBrie = agedBrie(5, 47)
     val gildedRose = GildedRose(agedBrie)
@@ -70,7 +70,7 @@ class GildedRoseTest {
 
   @Test
   fun `aged brie quality does not increase beyond maximum quality`() {
-    val agedBrie = agedBrie(10, 50)
+    val agedBrie = agedBrie(10, MAX_QUALITY)
     val gildedRose = GildedRose(agedBrie)
 
     // when
@@ -78,7 +78,7 @@ class GildedRoseTest {
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(2)
-    assertThat(agedBrie.quality).isEqualTo(50)
+    assertThat(agedBrie.quality).isEqualTo(MAX_QUALITY)
   }
 
   @Test
