@@ -2,7 +2,7 @@ group 'gr.le0nidas'
 version '0.1.0'
 
 buildscript {
-  ext.kotlinVersion = '1.2.41'
+  ext.kotlinVersion = '1.2.50'
 
   repositories {
     jcenter()
