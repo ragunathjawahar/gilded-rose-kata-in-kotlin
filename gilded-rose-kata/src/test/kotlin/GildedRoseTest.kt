@@ -10,7 +10,7 @@ class GildedRoseTest {
         dexterityVest(days, MAX_QUALITY),
         agedBrie(days, MAX_QUALITY),
         elixirOfTheMongoose(days, MAX_QUALITY),
-        sulfuras(days, 80),
+        sulfuras(80),
         backstagePasses(days, MAX_QUALITY)
     )
 
@@ -36,4 +36,20 @@ class GildedRoseTest {
     assertThat(agedBrie.sellIn).isEqualTo(-5)
     assertThat(agedBrie.quality).isEqualTo(50)
   }
+
+  @Test
+  fun `sulfuras, never has to be sold or decreases in quality`() {
+    // given
+    val sulfuras = sulfuras()
+    assertThat(sulfuras.sellIn).isEqualTo(0)
+    assertThat(sulfuras.quality).isEqualTo(SULFURAS_QUALITY)
+
+    // when
+    GildedRose(listOf(sulfuras)).runFor(100)
+
+    // then
+    assertThat(sulfuras.sellIn).isEqualTo(0)
+    assertThat(sulfuras.quality).isEqualTo(SULFURAS_QUALITY)
+  }
+
 }

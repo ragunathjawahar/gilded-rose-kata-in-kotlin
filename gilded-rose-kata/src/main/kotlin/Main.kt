@@ -3,7 +3,7 @@ fun main(args: Array<String>) {
       dexterityVest(10, 20),
       agedBrie(2, 0),
       elixirOfTheMongoose(5, 7),
-      sulfuras(0, 80),
+      sulfuras(),
       backstagePasses(15, 20)
       // Item("Conjured Mana Cake", 15, 20)
   )
