@@ -117,4 +117,17 @@ class GildedRoseTest {
     assertThat(backstagePasses.sellIn).isEqualTo(-1)
     assertThat(backstagePasses.quality).isEqualTo(0)
   }
+
+  @Test
+  fun `backstage passes, quality does not increase beyond maximum quality`() {
+    // given
+    val backstagePasses = backstagePasses(5, MAX_QUALITY)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    gildedRose.runFor(4)
+
+    // then
+    assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
+  }
 }
