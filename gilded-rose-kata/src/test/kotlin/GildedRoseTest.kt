@@ -3,6 +3,48 @@ import org.junit.Test
 
 class GildedRoseTest {
   @Test
+  fun `normal item's quality degrades by 1`() {
+    // given
+    val dragonEgg = Item("Dragon Egg", 10, 40)
+    val gildedRose = GildedRose(dragonEgg)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(dragonEgg.sellIn).isEqualTo(9)
+    assertThat(dragonEgg.quality).isEqualTo(39)
+  }
+
+  @Test
+  fun `normal item quality does not degrade beyond 0`() {
+    // given
+    val dragonEgg = Item("Dragon Egg", 0, 0)
+    val gildedRose = GildedRose(dragonEgg)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(dragonEgg.sellIn).isEqualTo(-1)
+    assertThat(dragonEgg.quality).isEqualTo(0)
+  }
+
+  @Test
+  fun `normal item's quality degrades by 2 once the sell by date passes`() {
+    // given
+    val dragonEgg = Item("Dragon Egg", 0, 20)
+    val gildedRose = GildedRose(dragonEgg)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(dragonEgg.sellIn).isEqualTo(-1)
+    assertThat(dragonEgg.quality).isEqualTo(18)
+  }
+
+  @Test
   fun `quality of an item is never negative`() {
     // given
     val days = 100
