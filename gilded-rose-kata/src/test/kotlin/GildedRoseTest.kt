@@ -95,6 +95,20 @@ class GildedRoseTest {
   }
 
   @Test
+  fun `aged brie's quality increase even if it is 0`() {
+    // given
+    val agedBrie = agedBrie(10, 0)
+    val gildedRose = GildedRose(agedBrie)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(agedBrie.sellIn).isEqualTo(9)
+    assertThat(agedBrie.quality).isEqualTo(1)
+  }
+
+  @Test
   fun `aged brie's quality does not increase beyond max quality before the sell-in date`() {
     // given
     val agedBrie = agedBrie(10, MAX_QUALITY)
@@ -120,6 +134,20 @@ class GildedRoseTest {
     // then
     assertThat(agedBrie.sellIn).isEqualTo(-6)
     assertThat(agedBrie.quality).isEqualTo(MAX_QUALITY)
+  }
+
+  @Test
+  fun `aged brie's quality is never negative`() {
+    // given
+    val agedBrie = agedBrie(0, 0)
+    val gildedRose = GildedRose(agedBrie)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(agedBrie.sellIn).isEqualTo(-1)
+    assertThat(agedBrie.quality).isEqualTo(2)
   }
 
   @Test
