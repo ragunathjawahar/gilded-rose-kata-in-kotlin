@@ -13,9 +13,12 @@ class GildedRoseTest {
         sulfuras(),
         backstagePasses(days, MAX_QUALITY)
     )
+    val gildedRose = GildedRose(items)
 
     // when
-    updateQuality(GildedRose(items), days)
+    for (i in 100 downTo 1) {
+      gildedRose.updateQuality()
+    }
 
     // then
     items.forEach {
@@ -156,9 +159,12 @@ class GildedRoseTest {
     val sulfuras = sulfuras()
     val originalSellIn = sulfuras.sellIn
     val originalQuality = sulfuras.quality
+    val gildedRose = GildedRose(sulfuras)
 
     // when
-    updateQuality(GildedRose(sulfuras), 100)
+    for (i in 100 downTo 0) {
+      gildedRose.updateQuality()
+    }
 
     // then
     assertThat(sulfuras.sellIn).isEqualTo(originalSellIn)
@@ -275,7 +281,7 @@ class GildedRoseTest {
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    updateQuality(gildedRose, 1)
+    gildedRose.updateQuality()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(-1)
@@ -296,11 +302,5 @@ class GildedRoseTest {
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(-4)
     assertThat(backstagePasses.quality).isEqualTo(0)
-  }
-
-  private fun updateQuality(gildedRose: GildedRose, days: Int) {
-    for (day in 1..days) {
-      gildedRose.updateQuality()
-    }
   }
 }
