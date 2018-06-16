@@ -166,58 +166,105 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `backstage passes, increases quality by 2 between 6 to 10 days of sell-in`() {
+  fun `backstage passes, quality increases by 1 when there are more than 10 days`() {
     // given
-    val backstagePasses = backstagePasses(10, 24)
+    val backstagePasses = backstagePasses(15, 20)
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    updateQuality(gildedRose, 1)
+    gildedRose.updateQuality()
 
     // then
-    assertThat(backstagePasses.sellIn).isEqualTo(9)
-    assertThat(backstagePasses.quality).isEqualTo(26)
-
-    // when
-    updateQuality(gildedRose, 3)
-
-    // then
-    assertThat(backstagePasses.sellIn).isEqualTo(6)
-    assertThat(backstagePasses.quality).isEqualTo(32)
+    assertThat(backstagePasses.sellIn).isEqualTo(14)
+    assertThat(backstagePasses.quality).isEqualTo(21)
   }
 
   @Test
-  fun `backstage passes, increases quality by 3 between 1 to 5 days of sell-in`() {
+  fun `backstage passes, quality increases before the concert event if it is already 0`() {
     // given
-    val backstagePasses = backstagePasses(5, 27)
+    val backstagePasses = backstagePasses(11, 0)
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    updateQuality(gildedRose, 1)
+    gildedRose.updateQuality()
 
     // then
-    assertThat(backstagePasses.sellIn).isEqualTo(4)
-    assertThat(backstagePasses.quality).isEqualTo(30)
-
-    // when
-    updateQuality(gildedRose, 3)
-
-    // then
-    assertThat(backstagePasses.sellIn).isEqualTo(1)
-    assertThat(backstagePasses.quality).isEqualTo(39)
+    assertThat(backstagePasses.sellIn).isEqualTo(10)
+    assertThat(backstagePasses.quality).isEqualTo(1)
   }
 
   @Test
-  fun `backstage passes, does not increase quality beyond max quality`() {
+  fun `backstage passes, quality increases by 2 between 10 to 6 days`() {
+    // given
+    val backstagePasses = backstagePasses(10, 1)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    for (i in 10 downTo 6) {
+      gildedRose.updateQuality()
+    }
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(5)
+    assertThat(backstagePasses.quality).isEqualTo(11)
+  }
+
+  @Test
+  fun `backstage passes, quality increases by 3 between 5 to 1 days`() {
+    // given
+    val backstagePasses = backstagePasses(5, 1)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    for (i in 5 downTo 1) {
+      gildedRose.updateQuality()
+    }
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(0)
+    assertThat(backstagePasses.quality).isEqualTo(16)
+  }
+
+
+  @Test
+  fun `backstage passes, quality does not increase beyond max quality if sell-in is more than 10 days`() {
+    // given
+    val backstagePasses = backstagePasses(24, MAX_QUALITY)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(23)
+    assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
+  }
+
+  @Test
+  fun `backstage passes, quality does not increase beyond max quality between 10 to 6 days`() {
     // given
     val backstagePasses = backstagePasses(10, MAX_QUALITY)
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    updateQuality(gildedRose, 2)
+    gildedRose.updateQuality()
 
     // then
-    assertThat(backstagePasses.sellIn).isEqualTo(8)
+    assertThat(backstagePasses.sellIn).isEqualTo(9)
+    assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
+  }
+
+  @Test
+  fun `backstage passes, quality does not increase beyond max quality between 5 to 1 days`() {
+    // given
+    val backstagePasses = backstagePasses(4, MAX_QUALITY)
+    val gildedRose = GildedRose(backstagePasses)
+
+    // when
+    gildedRose.updateQuality()
+
+    // then
+    assertThat(backstagePasses.sellIn).isEqualTo(3)
     assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
   }
 
@@ -236,16 +283,19 @@ class GildedRoseTest {
   }
 
   @Test
-  fun `backstage passes, quality does not increase beyond maximum quality`() {
+  fun `backstage passes, quality does not degrade below 0 after the concert`() {
     // given
-    val backstagePasses = backstagePasses(5, MAX_QUALITY)
+    val backstagePasses = backstagePasses(2, MAX_QUALITY)
     val gildedRose = GildedRose(backstagePasses)
 
     // when
-    updateQuality(gildedRose, 4)
+    for (i in 2 downTo -3) {
+      gildedRose.updateQuality()
+    }
 
     // then
-    assertThat(backstagePasses.quality).isEqualTo(MAX_QUALITY)
+    assertThat(backstagePasses.sellIn).isEqualTo(-4)
+    assertThat(backstagePasses.quality).isEqualTo(0)
   }
 
   private fun updateQuality(gildedRose: GildedRose, days: Int) {
