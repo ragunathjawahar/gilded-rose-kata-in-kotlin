@@ -51,15 +51,15 @@ class GildedRoseTest {
   fun `sulfuras, never has to be sold or decreases in quality`() {
     // given
     val sulfuras = sulfuras()
-    assertThat(sulfuras.sellIn).isEqualTo(0)
-    assertThat(sulfuras.quality).isEqualTo(SULFURAS_QUALITY)
+    val originalSellIn = sulfuras.sellIn
+    val originalQuality = sulfuras.quality
 
     // when
     GildedRose(sulfuras).runFor(100)
 
     // then
-    assertThat(sulfuras.sellIn).isEqualTo(0)
-    assertThat(sulfuras.quality).isEqualTo(SULFURAS_QUALITY)
+    assertThat(sulfuras.sellIn).isEqualTo(originalSellIn)
+    assertThat(sulfuras.quality).isEqualTo(originalQuality)
   }
 
 }
