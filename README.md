@@ -8,7 +8,7 @@ Print and add this on your wall:
 >
 > -- Kent Beck [(tweet)](https://twitter.com/kentbeck/status/250733358307500032?lang=en)
 
-#### Source / Αttribution
+#### Source / Attribution
 
 The original kata is written in C# by [@TerryHughes](https://twitter.com/TerryHughes) and [@NotMyself](https://twitter.com/NotMyself) and can be found at [https://github.com/NotMyself/GildedRose](https://github.com/NotMyself/GildedRose).
 
@@ -62,3 +62,17 @@ The *rj/kata_n* branches will have my implementations for every time I practise 
 
 ## Additional Notes
 The original kata restricts developers from altering the `Item` class. However, I wanted to see how far I can go with refactoring and made some changes to it as well.
+
+## Approach Summary
+* Indent source code to use 2 spaces.
+* Add JUnit and Google Truth for testing.
+* Add creator functions to create items for the Gilded Rose.
+* Add broad cover tests to capture behavior.
+* Extract parameterized `updateQuality(Item)` function.
+* Create seams, trap execution paths and create functions for Aged Brie, Backstage Passes, Sulfuras and normal items.
+* Create classes for Aged Brie, Sulfuras, Backstage Passes, Dexterity Vest and Elixir of the Mongoose.
+* Remove previously introduced creator functions.
+* Add tests for Conjured items and add a new class.
+* (Open / Closed Principle) Replace inheritance with composition, use `QualityUpdater` and `SellInUpdater` to substitute behavior.
+* Create a `ItemFactory` for object creation.
+* Create a `Formatter` interface to customize display behavior.
