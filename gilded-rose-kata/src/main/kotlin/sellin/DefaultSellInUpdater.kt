@@ -1,6 +1,6 @@
 package sellin
 
-class NormalSellInUpdater : SellInUpdater {
+class DefaultSellInUpdater : SellInUpdater {
   override fun update(sellIn: Int): Int =
       sellIn - 1
 }

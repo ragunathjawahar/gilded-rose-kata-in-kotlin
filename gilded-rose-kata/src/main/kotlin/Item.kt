@@ -1,14 +1,14 @@
-import quality.NormalQualityUpdater
+import quality.DefaultQualityUpdater
 import quality.QualityUpdater
-import sellin.NormalSellInUpdater
+import sellin.DefaultSellInUpdater
 import sellin.SellInUpdater
 
 class Item(
     private val name: String,
     var sellIn: Int,
     var quality: Int,
-    private val qualityUpdater: QualityUpdater = NormalQualityUpdater(),
-    private val sellInUpdater: SellInUpdater = NormalSellInUpdater()
+    private val qualityUpdater: QualityUpdater = DefaultQualityUpdater(),
+    private val sellInUpdater: SellInUpdater = DefaultSellInUpdater()
 ) {
   companion object {
     @JvmStatic val MAX_QUALITY = 50
