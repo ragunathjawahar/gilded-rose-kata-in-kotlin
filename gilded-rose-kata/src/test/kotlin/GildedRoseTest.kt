@@ -34,7 +34,7 @@ class GildedRoseTest {
     val dragonEgg = Item("Dragon Egg", 10, 40)
 
     // when
-    dragonEgg.updateQuality()
+    dragonEgg.update()
 
     // then
     assertThat(dragonEgg.sellIn).isEqualTo(9)
@@ -47,7 +47,7 @@ class GildedRoseTest {
     val dragonEgg = Item("Dragon Egg", 0, 0)
 
     // when
-    dragonEgg.updateQuality()
+    dragonEgg.update()
 
     // then
     assertThat(dragonEgg.sellIn).isEqualTo(-1)
@@ -60,7 +60,7 @@ class GildedRoseTest {
     val dragonEgg = Item("Dragon Egg", 0, 20)
 
     // when
-    dragonEgg.updateQuality()
+    dragonEgg.update()
 
     // then
     assertThat(dragonEgg.sellIn).isEqualTo(-1)
@@ -73,7 +73,7 @@ class GildedRoseTest {
     val dragonEgg = Item("Dragon Egg", 0, 1)
 
     // when
-    dragonEgg.updateQuality()
+    dragonEgg.update()
 
     // then
     assertThat(dragonEgg.sellIn).isEqualTo(-1)
@@ -86,7 +86,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(10, 10)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(9)
@@ -99,7 +99,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(0, 20)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(-1)
@@ -112,7 +112,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(10, 0)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(9)
@@ -125,7 +125,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(10, MAX_QUALITY)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(9)
@@ -138,7 +138,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(-5, 49)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(-6)
@@ -151,7 +151,7 @@ class GildedRoseTest {
     val agedBrie = AgedBrie(0, 0)
 
     // when
-    agedBrie.updateQuality()
+    agedBrie.update()
 
     // then
     assertThat(agedBrie.sellIn).isEqualTo(-1)
@@ -167,7 +167,7 @@ class GildedRoseTest {
 
     // when
     for (i in 100 downTo 0) {
-      sulfuras.updateQuality()
+      sulfuras.update()
     }
 
     // then
@@ -181,7 +181,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(15, 20)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(14)
@@ -194,7 +194,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(11, 0)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(10)
@@ -208,7 +208,7 @@ class GildedRoseTest {
 
     // when
     for (i in 10 downTo 6) {
-      backstagePasses.updateQuality()
+      backstagePasses.update()
     }
 
     // then
@@ -223,7 +223,7 @@ class GildedRoseTest {
 
     // when
     for (i in 5 downTo 1) {
-      backstagePasses.updateQuality()
+      backstagePasses.update()
     }
 
     // then
@@ -238,7 +238,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(24, MAX_QUALITY)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(23)
@@ -251,7 +251,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(10, MAX_QUALITY)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(9)
@@ -264,7 +264,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(4, MAX_QUALITY)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(3)
@@ -277,7 +277,7 @@ class GildedRoseTest {
     val backstagePasses = BackstagePasses(0, MAX_QUALITY)
 
     // when
-    backstagePasses.updateQuality()
+    backstagePasses.update()
 
     // then
     assertThat(backstagePasses.sellIn).isEqualTo(-1)
@@ -291,7 +291,7 @@ class GildedRoseTest {
 
     // when
     for (i in 2 downTo -3) {
-      backstagePasses.updateQuality()
+      backstagePasses.update()
     }
 
     // then
@@ -305,7 +305,7 @@ class GildedRoseTest {
     val manaCake = ConjuredManaCake(10, 12)
 
     // when
-    manaCake.updateQuality()
+    manaCake.update()
 
     // then
     assertThat(manaCake.sellIn).isEqualTo(9)
@@ -318,7 +318,7 @@ class GildedRoseTest {
     val manaCake = ConjuredManaCake(0, 10)
 
     // when
-    manaCake.updateQuality()
+    manaCake.update()
 
     // then
     assertThat(manaCake.sellIn).isEqualTo(-1)
@@ -331,7 +331,7 @@ class GildedRoseTest {
     val manaCake = ConjuredManaCake(0, 0)
 
     // when
-    manaCake.updateQuality()
+    manaCake.update()
 
     // then
     assertThat(manaCake.sellIn).isEqualTo(-1)

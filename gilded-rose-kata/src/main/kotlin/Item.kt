@@ -2,14 +2,14 @@ open class Item(
     private val name: String,
     var sellIn: Int,
     var quality: Int,
-    val qualityUpdater: QualityUpdater = NormalQualityUpdater(),
-    val sellInUpdater: SellInUpdater = NormalSellInUpdater()
+    private val qualityUpdater: QualityUpdater = NormalQualityUpdater(),
+    private val sellInUpdater: SellInUpdater = NormalSellInUpdater()
 ) {
   companion object {
     @JvmStatic val MAX_QUALITY = 50
   }
 
-  open fun updateQuality() {
+  fun update() {
     sellIn = sellInUpdater.update(sellIn)
     quality = qualityUpdater.update(sellIn, quality)
   }
