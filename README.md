@@ -1,6 +1,6 @@
 This is a kata that asks you to add a new feature to a system. The problem is that the code is not quite maintainable and does not scale easily either so the first thing that you have to do is to refactor it and **then** make the addition.
 
-Ofcaurse, since there are no tests, you need to add them **before** the refactoring to make sure that the system's behaviour does not change throughout the process.
+Of course, since there are no tests, you need to add them **before** the refactoring to make sure that the system's behaviour does not change throughout the process.
 
 Print and add this on your wall:
 
@@ -58,4 +58,7 @@ however "Sulfuras" is a legendary item and as such its Quality is 80 and it neve
 ## About this repository
 
 The master branch has an untested GildedRose class waiting to be refactored and updated with the new requirements!
-The *practise_kata_n* branches will have my implementations for every time I practise the kata.
+The *rj/kata_n* branches will have my implementations for every time I practise the kata.
+
+## Additional Notes
+The original kata restricts developers from altering the `Item` class. However, I wanted to see how far I can go with refactoring and made some changes to it as well.
