@@ -3,7 +3,7 @@ class AgedBrie(
     quality: Int
 ) : Item("Aged Brie" ,sellIn, quality, AgedBrieQualityUpdater()) {
   override fun updateQuality() {
-    sellIn--
+    sellIn = sellInUpdater.update(sellIn)
     quality = qualityUpdater.update(sellIn, quality)
   }
 }

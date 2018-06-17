@@ -3,7 +3,7 @@ class ConjuredManaCake(
     quality: Int
 ) : Item("Conjured Mana Cake", sellIn, quality, ConjuredQualityUpdater()) {
   override fun updateQuality() {
-    sellIn -= 1
+    sellIn = sellInUpdater.update(sellIn)
     quality = qualityUpdater.update(sellIn, quality)
   }
 }
