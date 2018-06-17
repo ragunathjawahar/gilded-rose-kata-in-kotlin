@@ -3,17 +3,19 @@ class BackstagePasses(
     quality: Int
 ) : Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality) {
   override fun updateQuality() {
-    if (sellIn >= 0 && quality < MAX_QUALITY) {
+    sellIn -= 1
+
+    val pastConcert = sellIn < 0
+    if (pastConcert) {
+      quality = 0
+
+    } else if (!pastConcert && quality < MAX_QUALITY) {
       quality += when (sellIn) {
-        in 0..5 -> 3
-        in 6..10 -> 2
+        in 0..4 -> 3
+        in 5..9 -> 2
         else -> 1
       }
-    }
-
-    sellIn -= 1
-    if (sellIn < 0) {
-      quality = 0
+      quality = Math.min(quality, MAX_QUALITY)
     }
   }
 }
