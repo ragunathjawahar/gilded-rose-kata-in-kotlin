@@ -135,7 +135,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality does not increase beyond max quality after the sell-in date`() {
     // given
-    val agedBrie = AgedBrie(-5, MAX_QUALITY)
+    val agedBrie = AgedBrie(-5, 49)
 
     // when
     agedBrie.updateQuality()

@@ -3,10 +3,8 @@ class AgedBrie(
     quality: Int
 ) : Item("Aged Brie" ,sellIn, quality) {
   override fun updateQuality() {
-    sellIn -=1
-    if (quality < MAX_QUALITY) {
-      val qualityToIncrease = if (sellIn < 0) 2 else 1
-      quality += qualityToIncrease
-    }
+    sellIn--
+    quality += if (sellIn >= 0) 1 else 2
+    quality = Math.min(quality, MAX_QUALITY)
   }
 }
