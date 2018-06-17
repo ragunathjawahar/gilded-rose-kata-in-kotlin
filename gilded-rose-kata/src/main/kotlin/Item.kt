@@ -1,4 +1,4 @@
-open class Item(
+class Item(
     private val name: String,
     var sellIn: Int,
     var quality: Int,

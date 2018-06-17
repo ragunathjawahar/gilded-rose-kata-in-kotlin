@@ -8,17 +8,17 @@ class GildedRoseTest {
     // given
     val days = 100
     val items = listOf(
-        DexterityVest(days, MAX_QUALITY),
-        AgedBrie(days, MAX_QUALITY),
-        ElixirOfTheMongoose(days, MAX_QUALITY),
-        Sulfuras(),
-        BackstagePasses(days, MAX_QUALITY)
+        dexterityVest(days, MAX_QUALITY),
+        agedBrie(days, MAX_QUALITY),
+        elixirOfTheMongoose(days, MAX_QUALITY),
+        sulfuras(),
+        backstagePasses(days, MAX_QUALITY)
     )
     val gildedRose = GildedRose(items)
 
     // when
     for (i in 100 downTo 1) {
-      gildedRose.updateQuality()
+      gildedRose.update()
     }
 
     // then
@@ -83,7 +83,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality increases by 1`() {
     // given
-    val agedBrie = AgedBrie(10, 10)
+    val agedBrie = agedBrie(10, 10)
 
     // when
     agedBrie.update()
@@ -96,7 +96,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality increases by 2 beyond the sell-in date`() {
     // given
-    val agedBrie = AgedBrie(0, 20)
+    val agedBrie = agedBrie(0, 20)
 
     // when
     agedBrie.update()
@@ -109,7 +109,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality increase even if it is 0`() {
     // given
-    val agedBrie = AgedBrie(10, 0)
+    val agedBrie = agedBrie(10, 0)
 
     // when
     agedBrie.update()
@@ -122,7 +122,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality does not increase beyond max quality before the sell-in date`() {
     // given
-    val agedBrie = AgedBrie(10, MAX_QUALITY)
+    val agedBrie = agedBrie(10, MAX_QUALITY)
 
     // when
     agedBrie.update()
@@ -135,7 +135,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality does not increase beyond max quality after the sell-in date`() {
     // given
-    val agedBrie = AgedBrie(-5, 49)
+    val agedBrie = agedBrie(-5, 49)
 
     // when
     agedBrie.update()
@@ -148,7 +148,7 @@ class GildedRoseTest {
   @Test
   fun `aged brie's quality is never negative`() {
     // given
-    val agedBrie = AgedBrie(0, 0)
+    val agedBrie = agedBrie(0, 0)
 
     // when
     agedBrie.update()
@@ -161,7 +161,7 @@ class GildedRoseTest {
   @Test
   fun `sulfuras, never has to be sold or decreases in quality`() {
     // given
-    val sulfuras = Sulfuras()
+    val sulfuras = sulfuras()
     val originalSellIn = sulfuras.sellIn
     val originalQuality = sulfuras.quality
 
@@ -178,7 +178,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality increases by 1 when there are more than 10 days`() {
     // given
-    val backstagePasses = BackstagePasses(15, 20)
+    val backstagePasses = backstagePasses(15, 20)
 
     // when
     backstagePasses.update()
@@ -191,7 +191,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality increases before the concert event if it is already 0`() {
     // given
-    val backstagePasses = BackstagePasses(11, 0)
+    val backstagePasses = backstagePasses(11, 0)
 
     // when
     backstagePasses.update()
@@ -204,7 +204,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality increases by 2 between 10 to 6 days`() {
     // given
-    val backstagePasses = BackstagePasses(10, 1)
+    val backstagePasses = backstagePasses(10, 1)
 
     // when
     for (i in 10 downTo 6) {
@@ -219,7 +219,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality increases by 3 between 5 to 1 days`() {
     // given
-    val backstagePasses = BackstagePasses(5, 1)
+    val backstagePasses = backstagePasses(5, 1)
 
     // when
     for (i in 5 downTo 1) {
@@ -235,7 +235,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality does not increase beyond max quality if sell-in is more than 10 days`() {
     // given
-    val backstagePasses = BackstagePasses(24, MAX_QUALITY)
+    val backstagePasses = backstagePasses(24, MAX_QUALITY)
 
     // when
     backstagePasses.update()
@@ -248,7 +248,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality does not increase beyond max quality between 10 to 6 days`() {
     // given
-    val backstagePasses = BackstagePasses(10, MAX_QUALITY)
+    val backstagePasses = backstagePasses(10, MAX_QUALITY)
 
     // when
     backstagePasses.update()
@@ -261,7 +261,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality does not increase beyond max quality between 5 to 1 days`() {
     // given
-    val backstagePasses = BackstagePasses(4, MAX_QUALITY)
+    val backstagePasses = backstagePasses(4, MAX_QUALITY)
 
     // when
     backstagePasses.update()
@@ -274,7 +274,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality falls down to zero after the concert`() {
     // given
-    val backstagePasses = BackstagePasses(0, MAX_QUALITY)
+    val backstagePasses = backstagePasses(0, MAX_QUALITY)
 
     // when
     backstagePasses.update()
@@ -287,7 +287,7 @@ class GildedRoseTest {
   @Test
   fun `backstage passes, quality does not degrade below 0 after the concert`() {
     // given
-    val backstagePasses = BackstagePasses(2, MAX_QUALITY)
+    val backstagePasses = backstagePasses(2, MAX_QUALITY)
 
     // when
     for (i in 2 downTo -3) {
@@ -302,7 +302,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, degrades in quality by 2 before sell-in date`() {
     // given
-    val manaCake = ConjuredManaCake(10, 12)
+    val manaCake = conjuredManaCake(10, 12)
 
     // when
     manaCake.update()
@@ -315,7 +315,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, degrades in quality by 4 after the sell-in date`() {
     // given
-    val manaCake = ConjuredManaCake(0, 10)
+    val manaCake = conjuredManaCake(0, 10)
 
     // when
     manaCake.update()
@@ -328,7 +328,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, quality does not go below 0`() {
     // given
-    val manaCake = ConjuredManaCake(0, 0)
+    val manaCake = conjuredManaCake(0, 0)
 
     // when
     manaCake.update()
