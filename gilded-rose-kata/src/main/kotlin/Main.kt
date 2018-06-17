@@ -18,15 +18,3 @@ fun main(args: Array<String>) {
 
   GildedRose(items).runFor(20)
 }
-
-private fun GildedRose.runFor(days: Int) {
-  for (day in 1..days) {
-    println("---- Day #$day ----")
-    update()
-    print()
-    println()
-  }
-}
-
-private fun GildedRose.print() =
-    items.forEach { item -> println(item) }

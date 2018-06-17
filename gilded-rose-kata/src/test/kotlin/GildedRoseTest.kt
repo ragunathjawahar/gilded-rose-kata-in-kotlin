@@ -1,4 +1,5 @@
 import com.google.common.truth.Truth.assertThat
+import display.Formatter
 import org.junit.Test
 import store.CONJURED_MANA_CAKE
 import store.DEXTERITY_VEST
@@ -22,12 +23,10 @@ class GildedRoseTest {
         sulfuras(),
         backstagePasses(days, MAX_QUALITY)
     )
-    val gildedRose = GildedRose(items)
+    val gildedRose = GildedRose(items, Formatter())
 
     // when
-    for (i in 100 downTo 1) {
-      gildedRose.update()
-    }
+    gildedRose.runFor(100)
 
     // then
     items.forEach {
