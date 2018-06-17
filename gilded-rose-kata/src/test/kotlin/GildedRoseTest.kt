@@ -1,4 +1,9 @@
 import Item.Companion.MAX_QUALITY
+import ItemFactory.Companion.agedBrie
+import ItemFactory.Companion.backstagePasses
+import ItemFactory.Companion.conjured
+import ItemFactory.Companion.normal
+import ItemFactory.Companion.sulfuras
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
@@ -8,9 +13,9 @@ class GildedRoseTest {
     // given
     val days = 100
     val items = listOf(
-        dexterityVest(days, MAX_QUALITY),
+        normal(DEXTERITY_VEST, days, MAX_QUALITY),
         agedBrie(days, MAX_QUALITY),
-        elixirOfTheMongoose(days, MAX_QUALITY),
+        normal(ELIXIR_OF_THE_MONGOOSE, days, MAX_QUALITY),
         sulfuras(),
         backstagePasses(days, MAX_QUALITY)
     )
@@ -302,7 +307,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, degrades in quality by 2 before sell-in date`() {
     // given
-    val manaCake = conjuredManaCake(10, 12)
+    val manaCake = conjured(CONJURED_MANA_CAKE, 10, 12)
 
     // when
     manaCake.update()
@@ -315,7 +320,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, degrades in quality by 4 after the sell-in date`() {
     // given
-    val manaCake = conjuredManaCake(0, 10)
+    val manaCake = conjured(CONJURED_MANA_CAKE, 0, 10)
 
     // when
     manaCake.update()
@@ -328,7 +333,7 @@ class GildedRoseTest {
   @Test
   fun `conjured mana cake, quality does not go below 0`() {
     // given
-    val manaCake = conjuredManaCake(0, 0)
+    val manaCake = conjured(CONJURED_MANA_CAKE, 0, 0)
 
     // when
     manaCake.update()
