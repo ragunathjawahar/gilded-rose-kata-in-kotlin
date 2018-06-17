@@ -1,5 +1,4 @@
 class GildedRose(val items: List<Item>) {
-  fun updateQuality() {
-    items.forEach { it.updateQuality() }
-  }
+  fun updateQuality() =
+      items.forEach { it.updateQuality() }
 }

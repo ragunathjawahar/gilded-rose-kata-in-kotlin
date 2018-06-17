@@ -4,8 +4,8 @@ fun main(args: Array<String>) {
       AgedBrie(2, 0),
       ElixirOfTheMongoose(5, 7),
       Sulfuras(),
-      BackstagePasses(15, 20)
-      // Item("Conjured Mana Cake", 15, 20)
+      BackstagePasses(15, 20),
+      ConjuredManaCake(15, 20)
   )
 
   val gildedRose = GildedRose(items)

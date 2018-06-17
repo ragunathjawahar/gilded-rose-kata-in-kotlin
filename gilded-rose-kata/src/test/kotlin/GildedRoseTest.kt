@@ -298,4 +298,43 @@ class GildedRoseTest {
     assertThat(backstagePasses.sellIn).isEqualTo(-4)
     assertThat(backstagePasses.quality).isEqualTo(0)
   }
+
+  @Test
+  fun `conjured mana cake, degrades in quality by 2 before sell-in date`() {
+    // given
+    val manaCake = ConjuredManaCake(10, 12)
+
+    // when
+    manaCake.updateQuality()
+
+    // then
+    assertThat(manaCake.sellIn).isEqualTo(9)
+    assertThat(manaCake.quality).isEqualTo(10)
+  }
+
+  @Test
+  fun `conjured mana cake, degrades in quality by 4 after the sell-in date`() {
+    // given
+    val manaCake = ConjuredManaCake(0, 10)
+
+    // when
+    manaCake.updateQuality()
+
+    // then
+    assertThat(manaCake.sellIn).isEqualTo(-1)
+    assertThat(manaCake.quality).isEqualTo(6)
+  }
+
+  @Test
+  fun `conjured mana cake, quality does not go below 0`() {
+    // given
+    val manaCake = ConjuredManaCake(0, 0)
+
+    // when
+    manaCake.updateQuality()
+
+    // then
+    assertThat(manaCake.sellIn).isEqualTo(-1)
+    assertThat(manaCake.quality).isEqualTo(0)
+  }
 }
