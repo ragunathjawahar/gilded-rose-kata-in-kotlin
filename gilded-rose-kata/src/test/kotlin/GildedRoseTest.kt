@@ -68,6 +68,19 @@ class GildedRoseTest {
   }
 
   @Test
+  fun `normal item's quality should not be less than 0 when it degrades by 2 after the sell-in date`() {
+    // given
+    val dragonEgg = Item("Dragon Egg", 0, 1)
+
+    // when
+    dragonEgg.updateQuality()
+
+    // then
+    assertThat(dragonEgg.sellIn).isEqualTo(-1)
+    assertThat(dragonEgg.quality).isEqualTo(0)
+  }
+
+  @Test
   fun `aged brie's quality increases by 1`() {
     // given
     val agedBrie = AgedBrie(10, 10)

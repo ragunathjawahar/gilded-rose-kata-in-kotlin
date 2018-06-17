@@ -9,8 +9,10 @@ open class Item(
 
   open fun updateQuality() {
     sellIn -= 1
-    if (quality > 0) {
-      quality -= if (sellIn > 0) 1 else 2
+    quality -= if (sellIn > 0) 1 else 2
+
+    if (quality < 0) {
+      quality = 0
     }
   }
 
