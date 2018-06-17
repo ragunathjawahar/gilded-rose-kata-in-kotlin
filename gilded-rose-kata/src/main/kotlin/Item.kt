@@ -1,7 +1,8 @@
 open class Item(
     private val name: String,
     var sellIn: Int,
-    var quality: Int
+    var quality: Int,
+    val qualityUpdater: QualityUpdater = NormalQualityUpdater()
 ) {
   companion object {
     @JvmStatic val MAX_QUALITY = 50
@@ -9,8 +10,7 @@ open class Item(
 
   open fun updateQuality() {
     sellIn -= 1
-    quality -= if (sellIn > 0) 1 else 2
-    quality = Math.max(quality, 0)
+    quality = qualityUpdater.update(sellIn, quality)
   }
 
   override fun toString(): String =
