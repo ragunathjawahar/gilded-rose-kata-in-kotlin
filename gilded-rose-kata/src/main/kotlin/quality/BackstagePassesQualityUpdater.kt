@@ -1,6 +1,6 @@
 package quality
 
-import Item.Companion.MAX_QUALITY
+import store.Item.Companion.MAX_QUALITY
 
 class BackstagePassesQualityUpdater : QualityUpdater {
   override fun update(sellIn: Int, quality: Int): Int {

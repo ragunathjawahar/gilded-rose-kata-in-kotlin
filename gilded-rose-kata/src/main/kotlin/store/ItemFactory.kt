@@ -1,3 +1,5 @@
+package store
+
 import quality.AgedBrieQualityUpdater
 import quality.BackstagePassesQualityUpdater
 import quality.ConjuredQualityUpdater

@@ -1,8 +1,10 @@
-import ItemFactory.Companion.agedBrie
-import ItemFactory.Companion.backstagePasses
-import ItemFactory.Companion.conjured
-import ItemFactory.Companion.normal
-import ItemFactory.Companion.sulfuras
+import store.DEXTERITY_VEST
+import store.ELIXIR_OF_THE_MONGOOSE
+import store.ItemFactory.Companion.agedBrie
+import store.ItemFactory.Companion.backstagePasses
+import store.ItemFactory.Companion.conjured
+import store.ItemFactory.Companion.normal
+import store.ItemFactory.Companion.sulfuras
 
 fun main(args: Array<String>) {
   val items = mutableListOf(

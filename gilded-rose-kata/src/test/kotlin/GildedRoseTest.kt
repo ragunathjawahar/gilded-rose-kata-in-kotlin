@@ -1,11 +1,14 @@
-import Item.Companion.MAX_QUALITY
-import ItemFactory.Companion.agedBrie
-import ItemFactory.Companion.backstagePasses
-import ItemFactory.Companion.conjured
-import ItemFactory.Companion.normal
-import ItemFactory.Companion.sulfuras
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
+import store.CONJURED_MANA_CAKE
+import store.DEXTERITY_VEST
+import store.ELIXIR_OF_THE_MONGOOSE
+import store.Item.Companion.MAX_QUALITY
+import store.ItemFactory.Companion.agedBrie
+import store.ItemFactory.Companion.backstagePasses
+import store.ItemFactory.Companion.conjured
+import store.ItemFactory.Companion.normal
+import store.ItemFactory.Companion.sulfuras
 
 class GildedRoseTest {
   @Test
@@ -36,7 +39,7 @@ class GildedRoseTest {
   @Test
   fun `normal item's quality degrades by 1`() {
     // given
-    val dragonEgg = Item("Dragon Egg", 10, 40)
+    val dragonEgg = normal("Dragon Egg", 10, 40)
 
     // when
     dragonEgg.update()
@@ -49,7 +52,7 @@ class GildedRoseTest {
   @Test
   fun `normal item quality does not degrade below 0`() {
     // given
-    val dragonEgg = Item("Dragon Egg", 0, 0)
+    val dragonEgg = normal("Dragon Egg", 0, 0)
 
     // when
     dragonEgg.update()
@@ -62,7 +65,7 @@ class GildedRoseTest {
   @Test
   fun `normal item's quality degrades by 2 once the sell-in date passes`() {
     // given
-    val dragonEgg = Item("Dragon Egg", 0, 20)
+    val dragonEgg = normal("Dragon Egg", 0, 20)
 
     // when
     dragonEgg.update()
@@ -75,7 +78,7 @@ class GildedRoseTest {
   @Test
   fun `normal item's quality should not be less than 0 when it degrades by 2 after the sell-in date`() {
     // given
-    val dragonEgg = Item("Dragon Egg", 0, 1)
+    val dragonEgg = normal("Dragon Egg", 0, 1)
 
     // when
     dragonEgg.update()

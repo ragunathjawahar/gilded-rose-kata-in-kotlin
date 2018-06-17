@@ -1,3 +1,5 @@
+package store
+
 import quality.DefaultQualityUpdater
 import quality.QualityUpdater
 import sellin.DefaultSellInUpdater
