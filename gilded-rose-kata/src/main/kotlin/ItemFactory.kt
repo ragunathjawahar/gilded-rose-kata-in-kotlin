@@ -1,3 +1,9 @@
+import quality.AgedBrieQualityUpdater
+import quality.BackstagePassesQualityUpdater
+import quality.ConjuredQualityUpdater
+import quality.NoopQualityUpdater
+import sellin.NoopSellInUpdater
+
 const val CONJURED_MANA_CAKE = "Conjured Mana Cake"
 const val DEXTERITY_VEST = "+5 Dexterity Vest"
 const val ELIXIR_OF_THE_MONGOOSE = "Elixir of the Mongoose"

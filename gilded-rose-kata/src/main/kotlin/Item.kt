@@ -1,3 +1,8 @@
+import quality.NormalQualityUpdater
+import quality.QualityUpdater
+import sellin.NormalSellInUpdater
+import sellin.SellInUpdater
+
 class Item(
     private val name: String,
     var sellIn: Int,
