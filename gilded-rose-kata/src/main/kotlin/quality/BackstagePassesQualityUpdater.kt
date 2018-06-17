@@ -9,12 +9,12 @@ class BackstagePassesQualityUpdater : QualityUpdater {
       0
 
     } else if (!pastConcert && quality < MAX_QUALITY) {
-      val newQuality = quality + when (sellIn) {
+      val updatedQuality = quality + when (sellIn) {
         in 0..4 -> 3
         in 5..9 -> 2
         else -> 1
       }
-      Math.min(newQuality, MAX_QUALITY)
+      Math.min(updatedQuality, MAX_QUALITY)
 
     } else {
       quality

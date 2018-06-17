@@ -2,7 +2,7 @@ package quality
 
 class DefaultQualityUpdater : QualityUpdater {
   override fun update(sellIn: Int, quality: Int): Int {
-    val newQuality = quality - if (sellIn > 0) 1 else 2
-    return Math.max(0, newQuality)
+    val updatedQuality = quality - if (sellIn > 0) 1 else 2
+    return Math.max(0, updatedQuality)
   }
 }
